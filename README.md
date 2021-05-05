@@ -4,6 +4,7 @@ Project1
 # Schema
 ## songplays
 |songplay_id|SERIAL|
+|-----------|---------|
 |start_time|TIMESTAMP|
 |user_id|INT|
 |level|VARCHAR|
@@ -15,6 +16,7 @@ Project1
 
 ## users
 |user_id|INT|
+|----------|-------|
 |first_name|VARCHAR|
 |last_name|VARCHAR|
 |gender|VARCHAR|
@@ -22,6 +24,7 @@ Project1
 
 ## songs
 |song_id|VARCHAR|
+|---------|-------|
 |title|VARCHAR|
 |artist_id|VARCHAR|
 |year|INT|
@@ -29,6 +32,7 @@ Project1
 
 ## artists
 |artist_id|VARCHAR|
+|----------|-------|
 |name|VARCHAR|
 |location|VARCHAR|
 |latitude|FLOAT8|
@@ -36,6 +40,7 @@ Project1
 
 ## time
 |start_time|TIMESTAMP|
+|----------|---------|
 |hour|INT|
 |day|INT|
 |week|INT|
