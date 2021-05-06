@@ -10,7 +10,7 @@ time_table_drop = "DROP TABLE IF EXISTS times"
 
 songplay_table_create = ("""CREATE TABLE IF NOT EXISTS songplays ( \
 songplay_id SERIAL PRIMARY KEY, \
-start_time TIMESTAMP, \
+start_time TIMESTAMP NOT NULL, \
 user_id INT NOT NULL, \
 level VARCHAR, \
 song_id VARCHAR, \
@@ -31,17 +31,17 @@ level VARCHAR)\
 song_table_create = ("""CREATE TABLE IF NOT EXISTS songs (\
 song_id VARCHAR NOT NULL PRIMARY KEY, \
 title VARCHAR, \
-artist_id VARCHAR, \
+artist_id VARCHAR NOT NULL, \
 year INT, \
-duration FLOAT8)\
+duration FLOAT)\
 """)
 
 artist_table_create = ("""CREATE TABLE IF NOT EXISTS artists (\
 artist_id VARCHAR NOT NULL PRIMARY KEY, \
 name VARCHAR, \
 location VARCHAR, \
-latitude FLOAT8, \
-longtitude FLOAT8)\
+latitude FLOAT, \
+longtitude FLOAT)\
 """)
 
 time_table_create = ("""CREATE TABLE IF NOT EXISTS time (\
@@ -56,19 +56,30 @@ weekday INT)\
 
 # INSERT RECORDS
 
-songplay_table_insert = ("""INSERT INTO songplays (start_time, user_id, level, song_id, artist_id, session_id, location, user_agent) VALUES(%s, %s, %s, %s, %s, %s, %s, %s)
+songplay_table_insert = ("""INSERT INTO songplays 
+(start_time, user_id, level, 
+song_id, artist_id, session_id, 
+location, user_agent) 
+VALUES(%s, %s, %s, %s, %s, %s, %s, %s)
 """)
 
-user_table_insert = ("""INSERT INTO users VALUES(%s, %s, %s, %s, %s) ON CONFLICT (user_id) DO NOTHING
+user_table_insert = ("""INSERT INTO users 
+VALUES(%s, %s, %s, %s, %s) 
+ON CONFLICT (user_id) DO NOTHING
 """)
 
-song_table_insert = ("""INSERT INTO songs VALUES(%s, %s, %s, %s, %s) ON CONFLICT (song_id) DO NOTHING 
+song_table_insert = ("""INSERT INTO songs 
+VALUES(%s, %s, %s, %s, %s) 
+ON CONFLICT (song_id) DO NOTHING 
 """)
 
-artist_table_insert = ("""INSERT INTO artists VALUES(%s, %s, %s, %s, %s) ON CONFLICT (artist_id) DO NOTHING
+artist_table_insert = ("""INSERT INTO artists 
+VALUES(%s, %s, %s, %s, %s) 
+ON CONFLICT (artist_id) DO NOTHING
 """)
 
-time_table_insert = ("""INSERT INTO time VALUES(%s, %s, %s, %s, %s, %s, %s)
+time_table_insert = ("""INSERT INTO time 
+VALUES(%s, %s, %s, %s, %s, %s, %s)
 """)
 
 # FIND SONGS

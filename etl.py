@@ -6,6 +6,12 @@ from sql_queries import *
 
 
 def process_song_file(cur, filepath):
+    """
+    Insert song data
+    Param cur: cursor of database
+    Param filepath: dictionary of file
+    Return: None
+    """
     # open song file
     df = pd.read_json(filepath, lines=True)
 
@@ -19,6 +25,12 @@ def process_song_file(cur, filepath):
 
 
 def process_log_file(cur, filepath):
+    """
+    Insert log data
+    Param cur: cursor of database
+    Param filepath: dictionary of file
+    Return: None
+    """
     # open log file
     df = pd.read_json(filepath, lines=True)
 
@@ -37,7 +49,7 @@ def process_log_file(cur, filepath):
         cur.execute(time_table_insert, list(row))
 
     # load user table
-    user_df = df[['userId', 'firstName', 'lastName', 'gender', 'level']].drop_duplicates()
+    user_df = df[['userId', 'firstName', 'lastName', 'gender', 'level']]
 
     # insert user records
     for i, row in user_df.iterrows():
@@ -61,6 +73,13 @@ def process_log_file(cur, filepath):
 
 
 def process_data(cur, conn, filepath, func):
+    """
+    Get all .josn file
+    Param cur: cursor of database
+    Param filepath: dictionary of file
+    Param func: functions to process different types of file
+    Return: None
+    """
     # get all files matching extension from directory
     all_files = []
     for root, dirs, files in os.walk(filepath):

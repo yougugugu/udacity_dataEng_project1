@@ -1,5 +1,16 @@
 # Puropse
-Project1
+This is project 1 for Udacity course: Data Engineering. This project does ETL process, create a database based on postgreSQL ans insert processed data into database.
+
+# File
+`create_tables.py` is to create differernt tables 
+`etl.py` is to do ETL process, which reads data from .json file
+`sql_queries` contains SQL langauges that create tables, insert values and query tables.
+
+# Usage
+Open terminal and `cd` to dictionary of this project, e.g. `...\project1`. Type `python create_tables.py` and then `python etl.py`
+
+# Test
+Open `test.ipynb` to run example SQL queries.
 
 # Schema
 |songplays||
@@ -47,4 +58,3 @@ Project1
 |month|INT|
 |year|INT|
 |weekday|INT|
-
